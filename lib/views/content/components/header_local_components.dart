@@ -4,21 +4,34 @@ import 'package:ifood_flutter_clone/core/theme/app_icons.dart';
 import 'package:ifood_flutter_clone/core/theme/app_typography.dart';
 
 class HeaderLocalComponents extends StatelessWidget {
-  final String localtion;
+  final String location;
 
   const HeaderLocalComponents({
     Key? key,
-    required this.localtion,
+    required this.location,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return SliverPersistentHeader(
+      delegate: _HeaderLocalComponentsDelegate(
+        location,
+      ),
+    );
+  }
+}
+
+class _HeaderLocalComponentsDelegate extends SliverPersistentHeaderDelegate {
+  final String localtion;
+
+  _HeaderLocalComponentsDelegate(this.localtion);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       child: Column(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).padding.top,
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -41,5 +54,16 @@ class HeaderLocalComponents extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  double get maxExtent => 40;
+
+  @override
+  double get minExtent => 40;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
