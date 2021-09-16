@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ifood_flutter_clone/controllers/content_controller.dart';
+import 'package:ifood_flutter_clone/core/theme/app_colors.dart';
 import 'package:ifood_flutter_clone/core/theme/app_icons.dart';
 import 'package:ifood_flutter_clone/models/category.dart';
 import 'package:ifood_flutter_clone/views/content/components/bottom_navigator_component.dart';
 import 'package:ifood_flutter_clone/views/content/components/category_item_components.dart';
 import 'package:ifood_flutter_clone/views/content/components/content_tab_bar_component.dart';
+import 'package:ifood_flutter_clone/views/content/components/filters_components.dart';
 import 'package:ifood_flutter_clone/views/content/components/header_local_components.dart';
 
 class ContentPage extends StatefulWidget {
@@ -14,8 +16,7 @@ class ContentPage extends StatefulWidget {
   State<ContentPage> createState() => _ContentPageState();
 }
 
-class _ContentPageState extends State<ContentPage>
-    with SingleTickerProviderStateMixin {
+class _ContentPageState extends State<ContentPage> with SingleTickerProviderStateMixin {
   late final TabController tabController;
   final controller = ContentController();
   late List<Category> categorys;
@@ -32,6 +33,7 @@ class _ContentPageState extends State<ContentPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: NestedScrollView(
           physics: BouncingScrollPhysics(),
@@ -43,7 +45,8 @@ class _ContentPageState extends State<ContentPage>
               ContentTabBarComponent(
                 controller: tabController,
                 onTap: (index) {},
-              )
+              ),
+              FilterComponents(),
             ];
           },
           body: Column(
@@ -67,8 +70,7 @@ class _ContentPageState extends State<ContentPage>
                               return Padding(
                                 padding: EdgeInsets.only(
                                   left: index == 0 ? 16 : 0,
-                                  right:
-                                      index == categorys.length - 1 ? 16 : 10,
+                                  right: index == categorys.length - 1 ? 16 : 10,
                                 ),
                                 child: CategoryItemComponents(
                                   category: categorys[index],

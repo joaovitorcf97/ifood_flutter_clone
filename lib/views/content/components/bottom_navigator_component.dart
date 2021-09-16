@@ -22,6 +22,10 @@ class BottomNavigatorComponent extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Container(
+            height: 1,
+            color: Colors.grey[200],
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
@@ -47,12 +51,7 @@ class BottomNavigatorItemComponent extends StatelessWidget {
   final bool isActive;
   final Function()? onTap;
 
-  BottomNavigatorItemComponent copyWith(
-      {String? label,
-      String? activeIcon,
-      String? icon,
-      bool? isActive,
-      Function()? onTap}) {
+  BottomNavigatorItemComponent copyWith({String? label, String? activeIcon, String? icon, bool? isActive, Function()? onTap}) {
     return BottomNavigatorItemComponent(
       label: label ?? this.label,
       activeIcon: activeIcon ?? this.activeIcon,
@@ -79,10 +78,7 @@ class BottomNavigatorItemComponent extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            AppIcon(
-                icon: isActive ? activeIcon : icon,
-                size: Size(24, 24),
-                color: isActive ? AppColors.primaryColor : AppColors.black54),
+            AppIcon(icon: isActive ? activeIcon : icon, size: Size(24, 24), color: isActive ? AppColors.primaryColor : AppColors.black54),
             Text(
               label,
               style: TextStyle(
