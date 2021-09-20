@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ifood_flutter_clone/controllers/content_controller.dart';
 import 'package:ifood_flutter_clone/core/theme/app_colors.dart';
 import 'package:ifood_flutter_clone/core/theme/app_icons.dart';
+import 'package:ifood_flutter_clone/core/theme/app_images.dart';
 import 'package:ifood_flutter_clone/models/category.dart';
+import 'package:ifood_flutter_clone/views/content/components/banners_components.dart';
 import 'package:ifood_flutter_clone/views/content/components/bottom_navigator_component.dart';
 import 'package:ifood_flutter_clone/views/content/components/category_item_components.dart';
 import 'package:ifood_flutter_clone/views/content/components/content_tab_bar_component.dart';
@@ -77,6 +79,19 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                                 ),
                               );
                             },
+                          ),
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 170,
+                          child: BannersComponent(
+                            list: [
+                              BannerItemComponent(imagePath: AppImages.banner1),
+                              BannerItemComponent(imagePath: AppImages.banner2),
+                              BannerItemComponent(imagePath: AppImages.banner3),
+                              BannerItemComponent(imagePath: AppImages.banner4),
+                            ],
                           ),
                         ),
                       )
