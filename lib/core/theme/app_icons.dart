@@ -5,6 +5,11 @@ const String pathIcons = 'assets/icons/';
 
 class AppIcons {
   static const arroDown = '${pathIcons}arrow_down.svg';
+  static const fav = '${pathIcons}fav.svg';
+  static const favLine = '${pathIcons}fav_line.svg';
+  static const offer = '${pathIcons}offer.svg';
+  static const star = '${pathIcons}star.svg';
+
   static const homeActive = '${pathIcons}bottom/home_active.svg';
   static const home = '${pathIcons}bottom/home.svg';
 
@@ -23,9 +28,12 @@ class AppIcon extends StatelessWidget {
   final Size size;
   final Color color;
 
-  const AppIcon(
-      {Key? key, required this.icon, required this.size, required this.color})
-      : super(key: key);
+  const AppIcon({
+    Key? key,
+    required this.icon,
+    required this.size,
+    required this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
